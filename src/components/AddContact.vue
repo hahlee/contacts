@@ -7,12 +7,12 @@
             </div>
             <div>
                 <label for="email">Email:</label>
-                <input type="email" v-model="email" id="email" name="email" required>
+                <input type="email" v-model="email" id="email" name="email">
             </div>
 
             <div>
                 <label for="phone">Phone Number:</label>
-                <input type="tel" v-model="phone" id="phone" name="phone" required>
+                <input type="tel" v-model="phone" id="phone" name="phone">
             </div>
             <div class="checkbox-container">
                 <input type="checkbox" v-model="is_favorite" id="favorite" name="is_favorite">
