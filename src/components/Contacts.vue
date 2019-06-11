@@ -3,6 +3,7 @@
         <ul>
             <li class="item" v-for="contact in contacts" :key="contact.id" :id="contact.id">
                 <ContactItem v-bind:contact="contact"/>
+                <!-- <ContactItem v-bind:contact="contact" v-on:del-contact="$emit('del-contact', contact.id)"/> -->
             </li>
         </ul>
     </div>
@@ -26,6 +27,7 @@ export default {
     $grayBlue: #eaf1f8
     $width90: 90%
     $zeroMargin: 0 auto
+    $listPadding: 25px
     .contact-list
         border: 1px solid $gray
         text-align: $alignLeft
@@ -33,12 +35,11 @@ export default {
             list-style-type: none
             padding: 0
             margin: $zeroMargin
-            $listPadding: 15px
             .item
                 padding: $listPadding
                 &:nth-child(odd)
                     background-color: $grayBlue
                 &:hover
-                    p
+                    p.contact-name
                         text-decoration: underline
 </style>
