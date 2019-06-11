@@ -1,18 +1,53 @@
 <template>
   <div id="home">
     <h1>MarketDial Address Book</h1>
-    <ContactList />
+    <AddContact v-on:add-contact="addContact"/>
+    <Contacts v-bind:contacts="contacts"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ContactList from '@/components/ContactList'
+import ContactService from '@/services/ContactService'
+import Contacts from '@/components/Contacts'
+import AddContact from '@/components/AddContact'
+import axios from 'axios'
 
 export default {
   name: 'home',
   components: {
-    ContactList
+    Contacts,
+    AddContact
+  },
+  data () {
+    return {
+      contacts: []
+    }
+  },
+  beforeMount () {
+    this.getContacts()
+  },
+  methods: {
+    async getContacts () {
+      const { data } = await ContactService.getContacts()
+      this.contacts = data.contacts
+    },
+    async addContact (newContact) {
+      const { name, email, phone, is_favorite } = newContact
+      const url = 'http://contacts-api.marketdial.com/contact'
+      axios.post(url, newContact)
+        .then(res => this.contacts = [...this.contacts, res.data])
+        .catch(err => console.log(err))
+    }
   }
 }
 </script>
+
+<!-- global styles -->
+<style lang="sass">
+  $zeroMargin: 0 auto
+  #home
+    max-width: 500px
+    margin: 0 auto
+    padding: 0 15px
+</style>
