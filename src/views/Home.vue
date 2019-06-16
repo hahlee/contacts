@@ -44,7 +44,7 @@ export default {
       })
         .then(res => this.contacts = [...this.contacts, res.data])
         .catch(err => console.log(err))
-    },
+    }
     // async deleteContact (id) {
     //   axios.delete(`http://contacts-api.marketdial.com/contacts/${id}`)
     //     .then(res => this.contacts = this.contacts.filter(contact => contact.id !== id))
