@@ -34,13 +34,13 @@ export default {
       this.contacts = data.contacts
     },
     async addContact (newContact) {
-      const { name, email, phone, is_favorite } = newContact
+      const { name, email, phone, isFavorite } = newContact
       const url = 'http://contacts-api.marketdial.com/contact'
       axios.post(url, {
         name,
         email,
         phone,
-        is_favorite
+        isFavorite
       })
         .then(res => this.contacts = [...this.contacts, res.data])
         .catch(err => console.log(err))

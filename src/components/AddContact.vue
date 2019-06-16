@@ -15,7 +15,7 @@
                 <input type="tel" v-model="phone" id="phone" name="phone">
             </div>
             <div class="checkbox-container">
-                <input type="checkbox" v-model="is_favorite" id="favorite" name="is_favorite">
+                <input type="checkbox" v-model="isFavorite" id="favorite" name="is_favorite">
                 <label for="favorite">Favorite Contact?</label>
             </div>
             <div class="submit-container">
@@ -32,7 +32,7 @@ export default {
       name: this.name,
       email: this.email,
       phone: this.phone,
-      is_favorite: this.is_favorite
+      isFavorite: this.is_favorite
     }
   },
   methods: {
@@ -42,14 +42,14 @@ export default {
         name: this.name,
         email: this.email,
         phone: this.phone,
-        is_favorite: this.is_favorite
+        isFavorite: this.is_favorite
       }
       this.$emit('add-contact', newContact)
 
       this.name = ''
       this.email = ''
       this.phone = ''
-      this.is_favorite = ''
+      this.isFavorite = ''
     }
   }
 }
